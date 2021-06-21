@@ -1,0 +1,31 @@
+#regbar {
+  height: 67px;
+  background: #34495e;
+}
+
+#navthing {
+margin-left: 1095px;
+}
+
+h2 {
+  padding: 10px;
+  color: #ecf0f1;
+}
+
+.login {
+  position: relative;
+  width: 350px;
+  display: none;
+}
+
+a {
+  color: #309bb6;
+  text-decoration: none;
+  color: #ffffff;
+    }
+.link:hover{
+  background: cadetblue;
+    }
+.container-fluid{
+  margin-left: 150px;
+    }

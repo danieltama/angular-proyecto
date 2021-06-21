@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+
+<div class="vt">
+  <h3 style="font-size: 25px; margin-top: 25px;"> V E N T A S </h3>
+</div>
+<div class="im" >
+    <link ><i routerLink="/principal" class="fas fa-arrow-circle-left"></i>
+  </div>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="ventas.component.css">
+
+  </head>
+  <body>
+
+
+    <div class="container" style="margin-top: -80px;">
+      <div class="row">
+        <div class="col-lg-12" >
+          <button type="button" class="btn  botn" data-toggle="modal" style="color: white;" data-target="#Botonventas">Nuevo</button>
+          <button type="button" class="btn  botn" data-toggle="modal" style="color: white; margin-left: 10px;" data-target="#Dicobrar">Cobrar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+             <div class="table-responsive">
+               <table id="tablaVentas" class="table table-striped table-bordered table-condensed" style="width: 100%;">
+                 <thead class="text-center">
+                   <tr>
+                     <th>Cantidad</th>
+                     <th>Producto</th>
+                     <th>Total</th>
+                     <th></th>
+                   </tr>
+                 </thead>
+                 <tbody class="text-center">
+                   <tr *ngFor="let venta of ventaService.ventas">
+                    <td>{{venta.cantidad}}</td>
+                    <td>{{venta.producto}}</td>
+                    <td>{{venta.total}}</td>
+                    <td style="width: 10%;">
+                      <div class="text-center"><div class="btn-group" >
+                      <button class="btn botn" style="margin-inline: 10px; border-radius: 5px; color: white;" data-toggle="modal" data-target="#BotonEditar" (click)="editVenta(venta)">Editar</button>
+                      <button class="btn boton" style="border-radius: 5px;color: white;" (click)="deleteVenta(venta._id)">Eliminar</button>
+                    </div>
+                  </div>
+                  </td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+<!-- Modal -->
+<div class="modal fade" id="Botonventas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"style="font-size: 25px;">Agregando Ventas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-fade" style="background-image: url('/assets/img/FondV.png');">
+
+        <form #ventaForm="ngForm" (ngSubmit)="addVenta(ventaForm)" >
+
+
+
+          <input type="number" name="cantidad" #cantidad="ngModel" [(ngModel)]="ventaService.selectedVenta.cantidad" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Cantidad">
+
+
+          <input type="text" name="producto" #producto="ngModel" [(ngModel)]="ventaService.selectedVenta.producto" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 10px; margin-left: 100px;"  placeholder="Producto">
+
+          <input type="number" name="total" #nombre="ngModel" [(ngModel)]="ventaService.selectedVenta.total" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 150px; margin-top: 20px; margin-left: 100px; text-align: center;"  placeholder="Total">
+      </form>
+
+      <button type="button" class="btn  botn" data-toggle="modal" style="color: white; margin-left: 250px; margin-top: -56px; width: 150px;" data-target="#cobra">Total</button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn botn" style="color: white;" (click)="addVenta(ventaForm)">Guardar</button>
+        <button type="button" class="btn boton" style="color: white;" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Eitar Modal -->
+<div class="modal fade" id="BotonEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Editar Ventas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-fade" style="background-image: url('/assets/img/FondV.png');">
+
+        <form  #editForm="ngForm" (ngSubmit)="addVenta(editForm)" >
+
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="ventaService.selectedVenta._id">
+
+          <input type="number" name="cantidad"  [(ngModel)]="ventaService.selectedVenta.cantidad" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Cantidad">
+
+          <input type="text" name="producto"  [(ngModel)]="ventaService.selectedVenta.producto" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Producto">
+
+          <input type="number" name="total" [(ngModel)]="ventaService.selectedVenta.total" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Total">
+      </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn botn" style="color: white;" data-dismiss="modal" (click)="addVenta(editForm)">Guardar</button>
+        <button type="button" class="btn boton" style="color: white;" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Monto modelo-->
+<div class="modal fade" id="Dicobrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Caja de cobro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-fade" style="background-image: url('/assets/img/FondV.png');">
+
+        <div >
+
+            <label for="recipient-name" class="col-form-label" style="margin-left: 80px;"> Efectivo :</label>
+            <input type="number" [(ngModel)]="Monto" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 200px; margin-top: -35px; margin-left: 150px;"  placeholder="$ Efectivo">
+
+          <label for="recipient-name" class="col-form-label" style="margin-left: 100px; margin-top: 15px;"> Total :</label>
+          <input type="number" [(ngModel)]="Precio" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 200px; margin-top: -35px; margin-left: 150px;"  placeholder="$ Total">
+
+          <button type="button" class="btn botn" style="color: white; margin-left: 205px;width: 90px;height: 38px; margin-top: 15px;" data-toggle="modal" data-target="#exampleModalToggle2" (click)="cobrarVenta()">Cobrar</button>
+
+          <input type="number" [(ngModel)]="Cambio" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 200px; margin-top: 25px; margin-left: 150px;"  placeholder="$ Cambio">
+
+      </div>
+
+      </div>
+
+      <div class="modal-footer" >
+        <button type="button" class="btn botn" style="color: white;" (click)="Cleadventa()">Limpiar</button>
+        <button type="button" class="btn boton" style="color: white;" data-dismiss="modal">Salir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Multi monto modelo-->
+<div class="modal fade" id="cobra" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Caja de cobro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-fade" style="background-image: url('/assets/img/FondV.png');">
+
+        <div >
+
+            <label for="recipient-name" class="col-form-label" style="margin-left: 70px;"> Cantidad :</label>
+            <input type="number" [(ngModel)]="cantida" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 200px; margin-top: -35px; margin-left: 150px;"  placeholder=" Cantidad">
+
+          <label for="recipient-name" class="col-form-label" style="margin-left: 90px; margin-top: 15px;"> Precio :</label>
+          <input type="number" [(ngModel)]="preci" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 200px; margin-top: -35px; margin-left: 150px;"  placeholder=" Precio">
+
+          <button type="button" class="btn botn" style="color: white; margin-left: 205px;width: 90px;height: 38px; margin-top: 15px;" data-toggle="modal" data-target="#exampleModalToggle2" (click)="multiplicarProducto()"> Total </button>
+
+          <input type="number" [(ngModel)]="tot" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 200px; margin-top: 25px; margin-left: 150px;"  placeholder="$ total">
+
+      </div>
+
+      </div>
+
+      <div class="modal-footer" >
+        <button type="button" class="btn botn" style="color: white;" (click)="limpliar()">Limpiar</button>
+        <button type="button" class="btn boton" style="color: white;" data-dismiss="modal">Salir</button>
+      </div>
+    </div>
+  </div>
+</div>
+

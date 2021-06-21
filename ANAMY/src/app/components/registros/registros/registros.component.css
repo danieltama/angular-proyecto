@@ -1,0 +1,49 @@
+.col-lg-12 {
+  margin-top: 15px;
+}
+
+.img {
+  background-image: url(/src/assets/img/FONDO.jpg);
+}
+.botn {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #38c1a0;
+  color: white;
+  cursor: pointer;
+}
+
+.boton {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #f9635c;
+  color: white;
+  cursor: pointer;
+}
+.bot {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #A2B945;
+  color: white;
+  cursor: pointer;
+}
+a {
+  margin-top: 200px;
+  background: no-repeat;
+}
+
+.blop {
+  margin-right: 100px;
+}
+.vt {
+  margin-top: 0px !important;
+  padding-left: 520px !important;
+  margin-left: 75px;
+}
+

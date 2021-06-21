@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<div class="vt">
+  <h3 style="font-size: 25px; margin-top: 25px;"> C A J A </h3>
+</div>
+<div class="im">
+  <link ><i routerLink="/principal" class="fas fa-arrow-circle-left"></i>
+</div>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="caja.component.css">
+
+  </head>
+  <body>
+
+
+    <div class="container" style="margin-top: -90px;">
+      <div class="row">
+        <div class="col-lg-12" >
+          <button type="button" class="btn  botn" data-toggle="modal" style="color: white;" data-target="#Botonventas">Nuevo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+             <div class="table-responsive">
+               <table id="tablaPersonas" class="table table-striped table-bordered table-condensed" style="width: 100%;">
+                 <thead class="text-center">
+                   <tr>
+                     <th>Cierre Anterior</th>
+                     <th>Fecha Anterior</th>
+                     <th>Saldo Total</th>
+                     <th>Hora</th>
+                     <th>Fecha Actual</th>
+                     <th>Caja</th>
+                     <th>Retiro</th>
+                     <th></th>
+                   </tr>
+                 </thead>
+                 <tbody class="text-center">
+                   <tr *ngFor="let caja of cajaService.cajas">
+                    <td>{{caja.cierrea}}</td>
+                    <td>{{caja.fechaa}}</td>
+                    <td>{{caja.saldot}}</td>
+                    <td>{{caja.hora}}</td>
+                    <td>{{caja.fechap}}</td>
+                    <td>{{caja.caja}}</td>
+                    <td>{{caja.retiro}}</td>
+                    <td style="width: 10%;">
+                      <div class="text-center"><div class="btn-group" >
+                      <button class="btn botn" style="margin-inline: 10px; border-radius: 5px; color: white;" data-toggle="modal" data-target="#BotonEditar" (click)="editCaja(caja)">Editar</button>
+                      <button class="btn boton" style="border-radius: 5px;color: white;" (click)="deleteCaja(caja._id)">Eliminar</button>
+                    </div>
+                  </div>
+                  </td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+<!-- Modal -->
+<div class="modal fade" id="Botonventas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Registro de Caja</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-fade" style="background-image: url('/assets/img/FondV.png');">
+
+        <form #cajaForm="ngForm" (ngSubmit)="addCaja(cajaForm)">
+
+          <input type="number" name="cierrea" #cierrea="ngModel" [(ngModel)]="cajaService.selectedCaja.cierrea" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Cierre Anterior">
+
+          <label  style="margin-top: 5px; margin-left: 100px; color: gray;">Fecha Anterior</label>
+          <input type="date" name="fechaa" #fechaa="ngModel" [(ngModel)]="cajaService.selectedCaja.fechaa" #FechaAnterior class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: -2px; margin-left: 100px;"  placeholder="Fecha Anterior">
+
+          <input type="number" name="saldot" #saldot="ngModel" [(ngModel)]="cajaService.selectedCaja.saldot" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Saldo Total">
+
+          <label  style="margin-top: 5px; margin-left: 100px; color: gray;">Hora Actual</label>
+          <input type="time" name="hora" #hora="ngModel" [(ngModel)]="cajaService.selectedCaja.hora" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: -2px; margin-left: 100px;"  placeholder="Hora">
+
+          <label  style="margin-top: 5px; margin-left: 100px; color: gray;">Fecha Actual</label>
+          <input type="date" name="fechap" #fechap="ngModel" [(ngModel)]="cajaService.selectedCaja.fechap" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: -2px; margin-left: 100px;"  placeholder="Fecha Actual">
+
+          <input type="number" name="caja" #caja="ngModel" [(ngModel)]="cajaService.selectedCaja.caja" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Caja">
+
+          <input type="number" name="retiro" #retiro="ngModel" [(ngModel)]="cajaService.selectedCaja.retiro" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Retiro">
+
+      </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn botn" style="color: white;" (click)="addCaja(cajaForm)">Guardar</button>
+        <button type="button" class="btn boton" style="color: white;" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Eitar Modal -->
+<div class="modal fade" id="BotonEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Editar Registro de Caja</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-fade" style="background-image: url('/assets/img/FondV.png');">
+
+        <form #editForm="ngForm" (ngSubmit)="addCaja(editForm)">
+
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="cajaService.selectedCaja._id">
+
+          <input type="number" name="cierrea"  [(ngModel)]="cajaService.selectedCaja.cierrea" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Cierre Anterior">
+
+          <input type="date" name="fechaa"  [(ngModel)]="cajaService.selectedCaja.fechaa" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Fecha Anterior">
+
+          <input type="number" name="saldot"  [(ngModel)]="cajaService.selectedCaja.saldot" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Saldo Total">
+
+          <input type="time" name="hora"  [(ngModel)]="cajaService.selectedCaja.hora" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Hora">
+
+          <input type="date" name="fechap"  [(ngModel)]="cajaService.selectedCaja.fechap" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Fecha Actual">
+
+          <input type="number" name="caja" [(ngModel)]="cajaService.selectedCaja.caja" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Caja">
+
+          <input type="number" name="retiro"  [(ngModel)]="cajaService.selectedCaja.retiro" class="Center form-control mr-sm-2"
+          style="height: 38px; width: 300px; margin-top: 20px; margin-left: 100px;"  placeholder="Retiro">
+      </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn botn" style="color: white;" data-dismiss="modal" (click)="addCaja(editForm)">Guardar</button>
+        <button type="button" class="btn boton" style="color: white;" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

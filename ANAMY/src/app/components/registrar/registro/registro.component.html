@@ -1,0 +1,43 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="widht, initial-scale=0.1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../registro/registro.component.css">
+</head>
+
+<div class="signup-wrapper">
+	<img class="wave" src="../assets/img/register.jpeg">
+
+
+
+<div class="signup-content" style="margin-left: 500px; margin-top: 20px;">
+			<form (ngSubmit)="registro()" action="" class="form">
+				<img src="../assets/img/new.png" style="margin-left: -10px;">
+				<h2 class="title" style="margin-left: 5px;">Registrar</h2>
+           		<div class="input-div focus">
+                  <!--USERNAME-->
+           		   <div class="i"><i class="fas fa-user-plus"></i></div>
+           		   <div class="div">
+                      <input type="text" [(ngModel)]="user.username" name="username" class="input" required autofocus >
+                      <label for="loginUser">Usuario</label>
+           		   </div>
+           		</div>
+           		<div class="input-div focus">
+                 <!--PASSWORD-->
+           		   <div class="i"> <i class="fas fa-key"></i></div>
+           		   <div class="div">
+           		    	<input [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" name="password" class="input" required autofocus >
+                     <label for="loginUser">Contraseña</label>
+                     <h6  mat-icon-button  (click)="hide = !hide">
+                      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                     </h6>
+                  </div>
+            	</div>
+            	<button type="submit" class="btn" >Registrarse</button>
+              <P>Al registrate, aceptas nuestras Condiciones de uso y Política de privacidad. </P>
+            </form>
+        </div>
+  </div>
+
+<app-footer></app-footer>
+

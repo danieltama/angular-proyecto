@@ -1,0 +1,38 @@
+footer{
+  background: #000000 !important;
+}
+
+.dark{
+  color: white;
+}
+
+.fuenteGoogle{
+  font-family: 'Lora', serif;
+
+}
+
+nav a img {
+  width: 50px;
+}
+
+.Blanco{
+  color: white
+}
+
+.links{
+  color: rgb(0, 0, 141);
+}
+
+.separador{
+  padding-top: 0em;
+}
+
+
+.fuentesLink{
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+.container{
+  color: white;
+
+}

@@ -1,0 +1,50 @@
+.vt {
+  margin-top: 0px !important;
+  padding-left: 550px !important;
+  margin-left: 75px;
+}
+.col-lg-12 {
+  margin-top: 15px;
+}
+
+img {
+  height: auto;
+  width: auto;
+  max-width: 50px;
+  max-height: 50px;
+  margin-left: 10px;
+  margin-top: -380px;
+}
+.botn {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #38c1a0;
+  color: white;
+  cursor: pointer;
+}
+
+.boton {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #f9635c;
+  color: white;
+  cursor: pointer;
+}
+a {
+  margin-top: 200px;
+  background: no-repeat;
+}
+
+.blop {
+  margin-right: 100px;
+}
+.im{
+  font-size: 37px;
+  margin-left: 50px;
+  cursor: pointer;
+  color: #38c1a0;
+}

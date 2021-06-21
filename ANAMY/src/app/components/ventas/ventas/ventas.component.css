@@ -1,0 +1,103 @@
+.col-lg-12 {
+  margin-top: 15px;
+}
+
+img {
+  height: auto;
+  width: auto;
+  max-width: 50px;
+  max-height: 50px;
+  margin-left: 10px;
+  margin-top: -380px;
+}
+.botn {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #38c1a0;
+  color: white;
+  cursor: pointer;
+}
+
+.boton {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #f9635c;
+  color: white;
+  cursor: pointer;
+}
+.booto {
+  display: inline;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #f5bdba;
+  cursor: pointer;
+}
+a {
+  margin-top: 200px;
+  background: no-repeat;
+}
+
+.blop {
+  margin-right: 100px;
+}
+.vt {
+  margin-top: 0px !important;
+  padding-left: 550px !important;
+  margin-left: 75px;
+}
+.wave {
+  margin-top: 10px;
+  margin-left: 215px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.container {
+  color: black;
+}
+
+.ar {
+  margin-top: -5px;
+  margin-left: 215px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+
+/* Styles for wrapping the search box */
+
+.main {
+  width: 50%;
+  margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.im{
+  font-size: 37px;
+  margin-left: 50px;
+  cursor: pointer;
+  color: #38c1a0;
+}

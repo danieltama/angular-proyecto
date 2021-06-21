@@ -1,0 +1,45 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="widht, initial-scale=0.1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../login/login.component.css">
+</head>
+
+<div class="login-wrapper">
+	<img class="wave" src="../assets/img/Font.png">
+	<div class="container">
+		<div class="img">
+			<img src="">
+		</div>
+<div class="login-content">
+			<form (ngSubmit)="iniciarSesion()"  action="" class="form">
+				<img src="../assets/img/avatar.png">
+				<h2 class="title">Bienvenido</h2>
+           		<div class="input-div focus">
+                 <!--USERNAME-->
+           		   <div class="i"><i class="fas fa-user"></i></div>
+           		   <div class="div">
+           		   		<input type="text" name="loginUser" id="loginUser" [(ngModel)]="user.username" class="input" name="username" class="input" required autofocus>
+                    <label for="loginUser">Usuario</label>
+           		   </div>
+           		</div>
+           		<div class="input-div focus">
+                 <!--PASSWORD-->
+           		   <div class="i"> <i class="fas fa-lock"></i></div>
+           		   <div class="div">
+           		    	<input [type]="hide ? 'password' : 'text'"  [(ngModel)]="user.password" class="input" name="password" class="input" required autofocus >
+                     <label for="loginUser">Contraseña</label>
+                     <h6  mat-icon-button  (click)="hide = !hide">
+                      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                     </h6>
+                  </div>
+            	</div>
+            	<button type="submit" class="btn" >Iniciar Sesión</button>
+              <P>Al registrate, aceptas nuestras Condiciones de uso y Política de privacidad. </P>
+            </form>
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>
+
