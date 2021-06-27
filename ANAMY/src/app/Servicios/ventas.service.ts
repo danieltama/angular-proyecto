@@ -10,7 +10,7 @@ export class VentasService {
 
   selectedVenta : Ventas;
   ventas : Ventas[] = [];
-  readonly URL_API = 'http://localhost:3000/api/ventas';
+  readonly URL_API = 'http://34.226.54.145:3000/api/ventas';
 
   constructor(private http: HttpClient) {
     this.selectedVenta = new Ventas();

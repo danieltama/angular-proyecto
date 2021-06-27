@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UsuariosService {
 
   usuarios: any;
-  readonly URL_API = 'http://localhost:3000/api/';
+  readonly URL_API = 'http://34.226.54.145:3000/api/';
 
 
   constructor(private http: HttpClient) { }

@@ -12,9 +12,9 @@ export class RegistroService {
 
   usuarios : Usuarios[] = [];
 
-  private URL = 'http://localhost:3000/api'
+  private URL = 'http://34.226.54.145:3000/api'
 
-  private Url_auri = 'http://localhost:3000/api/users'
+  private Url_auri = 'http://34.226.54.145:3000/api/users'
 
   constructor(private http: HttpClient,
     private router: Router
@@ -31,7 +31,7 @@ export class RegistroService {
   }
 
   public putUsuario(id: String, usuario: Usuarios){
-    return this.http.put<boolean>("http://localhost:3000/api/users/" + id, usuario,{ observe: "response"});
+    return this.http.put<boolean>("http://34.226.54.145:3000/api/users/" + id, usuario,{ observe: "response"});
   }
 
   public deleteUsuario(usuario_id: any){
